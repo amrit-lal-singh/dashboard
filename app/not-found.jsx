@@ -1,11 +1,1 @@
-import Link from "next/link"
-
-export default function NotFound() {
-  return (
-    <main className="text-center">
-      <h2 className="text-3xl">There was a problem.</h2>
-      <p>We could not find the page you were looking for.</p>
-      <p>Go back to the <Link href="/">dashboard</Link>.</p>
-    </main>
-  )
-}
+```jsx import Link from "next/link" import mixpanel from 'mixpanel'; // Import mixpanel library export default function NotFound() { const handleLinkClick = () => { mixpanel.track('Dashboard Redirect', { }); // Track the event when Link is clicked } return ( <main className="text-center"> <h2 className="text-3xl">There was a problem.</h2> <p>We could not find the page you were looking for.</p> <p>Go back to the <Link href="/" onClick={handleLinkClick}>dashboard</Link>.</p> {/* Add onClick event handler */} </main> ) } ```

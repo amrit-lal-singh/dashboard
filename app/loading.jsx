@@ -1,8 +1,1 @@
-export default function Loading() {
-  return (
-    <main className="text-center">  
-      <h2 className="text-primary">Loading...</h2>
-      <p>Hopefully not for to long :)</p>
-    </main>
-  )
-}
+```jsx import mixpanel from 'mixpanel'; export default function Loading() { const trackEvent = (eventName, eventProperties) => { mixpanel.track(eventName, eventProperties); }; return ( <main className="text-center"> <h2 className="text-primary" onClick={() => trackEvent("Loading Message Viewed", { 'Message': 'Loading...', 'Page': 'Loading Screen' })}>Loading...</h2> <p onClick={() => trackEvent("Loading Message Viewed", { 'Message': 'Hopefully not for to long :)', 'Page': 'Loading Screen' })}>Hopefully not for to long :)</p> </main> ); } ```
