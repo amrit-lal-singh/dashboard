@@ -1,10 +1,1 @@
-import CreateForm from './CreateForm'
-
-export default async function CreateTicket() {
-  return (
-    <main>
-      <h2 className="text-center">Open a New Ticket</h2>
-      <CreateForm />
-    </main>
-  )
-}
+```jsx import CreateForm from './CreateForm'; import mixpanel from 'mixpanel'; // Import Mixpanel library export default async function CreateTicket() { // Track event when the page is viewed mixpanel.track("New Ticket Page Viewed"); // Function to handle form submission and track event const handleSubmit = () => { // Form submission logic // Track event when form is submitted mixpanel.track("Form Submitted"); }; return ( <main> <h2 className="text-center">Open a New Ticket</h2> <CreateForm onSubmit={handleSubmit} /> {/* Pass handleSubmit function to form component */} </main> ); } ```
