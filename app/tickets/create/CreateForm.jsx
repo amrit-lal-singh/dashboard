@@ -32,8 +32,10 @@ export default function CreateForm() {
       body: JSON.stringify(newTicket)
     })
 
-    if (res.status === 201) {
-        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
+if (res.status === 201) {
+    mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
+>>>>
+UPDATE        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
         router.refresh()
         router.push('/tickets')
     }    
