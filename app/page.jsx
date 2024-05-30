@@ -1,9 +1,9 @@
 import Link from 'next/link'
 // //Import Mixpanel SDK
-// import mixpanel from 'mixpanel-browser';
+import mixpanel from 'mixpanel-browser';
  
 // // Near entry of your product, init Mixpanel
-// mixpanel.init('YOUR_TOKEN', {debug: true, track_pageview: true, persistence: 'localStorage'});
+mixpanel.init('58c886e21f37ceada78f5a7d090d1629', {debug: true, track_pageview: true, persistence: 'localStorage'});
 export default function Home() {
   return (
     <main>
