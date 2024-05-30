@@ -33,10 +33,10 @@ export default function CreateForm() {
     })
 
     if (res.status === 201) {
-        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
-        router.refresh()
-        router.push('/tickets')
-    }    
+      router.refresh()
+      router.push('/tickets')
+    }
+    
   }
 
   return (
