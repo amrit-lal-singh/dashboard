@@ -8,10 +8,23 @@ import mixpanel from 'mixpanel-browser';
 // Near entry of your product, init Mixpanel
 mixpanel.init('58c886e21f37ceada78f5a7d090d1629', {debug: true, track_pageview: true, persistence: 'localStorage'});
 
-// mixpanel.track('Sign Up', {
-//   'Signup Type': 'Referral'
-// })
-
+const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+    const newTicket = {
+        title, body, priority, user_email: 'mario@netninja.dev'
+    }
+    const res = await fetch('http://localhost:4000/tickets', {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newTicket)
+    })
+    if (res.status === 201) {
+        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
+        router.refresh()
+        router.push('/tickets')
+    }
+}
 export default function CreateForm() {
   const router = useRouter()
 
@@ -32,10 +45,8 @@ export default function CreateForm() {
       body: JSON.stringify(newTicket)
     })
 
-if (res.status === 201) {
-    mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
->>>>
-UPDATE        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
+    if (res.status === 201) {
+        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
         router.refresh()
         router.push('/tickets')
     }    
