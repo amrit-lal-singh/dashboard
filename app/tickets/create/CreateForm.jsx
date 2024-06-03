@@ -6,8 +6,7 @@ import { useState } from "react"
 import mixpanel from 'mixpanel-browser';
  
 // Near entry of your product, init Mixpanel
-mixpanel.init('58c886e21f37ceada78f5a7d090d1629', {debug: true, track_pageview: true, persistence: 'localStorage'});
-
+mixpanel.track('Priority Change', { 'Priority': e.target.value }); mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
 const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
