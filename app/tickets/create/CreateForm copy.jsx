@@ -6,25 +6,12 @@ import { useState } from "react"
 import mixpanel from 'mixpanel-browser';
  
 // Near entry of your product, init Mixpanel
-mixpanel.track('Priority Change', { 'Priority': e.target.value }); mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
-const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    const newTicket = {
-        title, body, priority, user_email: 'mario@netninja.dev'
-    }
-    const res = await fetch('http://localhost:4000/tickets', {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(newTicket)
-    })
-if (res.status === 201) {
-mixpanel.track('Priority Change', { 'Priority': e.target.value });>>>>
-UPDATE        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
-        router.refresh()
-        router.push('/tickets')
-    }
-}
+mixpanel.init('58c886e21f37ceada78f5a7d090d1629', {debug: true, track_pageview: true, persistence: 'localStorage'});
+
+// mixpanel.track('Sign Up', {
+//   'Signup Type': 'Referral'
+// })
+
 export default function CreateForm() {
   const router = useRouter()
 
@@ -46,10 +33,10 @@ export default function CreateForm() {
     })
 
     if (res.status === 201) {
-        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
-        router.refresh()
-        router.push('/tickets')
-    }    
+      router.refresh()
+      router.push('/tickets')
+    }
+    
   }
 
   return (
