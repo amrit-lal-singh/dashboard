@@ -20,8 +20,7 @@ const handleSubmit = async (e) => {
         body: JSON.stringify(newTicket)
     })
 if (res.status === 201) {
-    mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
->>>>
+mixpanel.track('Priority Change', { 'Priority': e.target.value });>>>>
 UPDATE        mixpanel.track('Sign Up', { 'formsubmitted': 'congratulations' });
         router.refresh()
         router.push('/tickets')
