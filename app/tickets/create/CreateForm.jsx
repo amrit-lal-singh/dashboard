@@ -27,16 +27,19 @@ export default function CreateForm() {
     const newTicket = { title, body, priority, user_email: 'mario@netninja.dev' }
 
     const res = await fetch('http://localhost:4000/tickets', {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(newTicket)
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newTicket)
     })
-
     if (res.status === 201) {
-      router.refresh()
-      router.push('/tickets')
-    }
-    
+        mixpanel.track('Sign Up', {
+            'formsubmitted': 'congratulations',
+            'user_email': newTicket.user_email,
+            'priority': newTicket.priority
+        });
+        router.refresh()
+        router.push('/tickets')
+    }    
   }
 
   return (
